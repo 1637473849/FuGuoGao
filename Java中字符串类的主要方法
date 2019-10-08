@@ -1,1 +1,252 @@
 
+# 字符串String
+
+> "":空串
+>
+> 字符串对象一经引用，无法更改
+>
+> 字符串时常量
+
+## 定义格式
+
+```java
+String a = new String("zifuchuan");//有两个对象，堆地址
+//new String（）//这时一个对象   "zifuchuan"//这也是一个对象
+String a1 = “asdadada”;//只有一个对象，地址时常量池地址
+```
+
+两个地址永远不会相等
+
+## 字符串的常用方法
+
+#### 原则：不论堆字符串做什么操作，原字符串不变，变化后生成一个新的字符串
+
+1. ### 获取和判断
+
+   1. 判断字符串是否为空  isEmpty()
+
+      ```java
+      String a = "asdasd";
+      int b = a.length();//判断这个字符串有几个字符
+      System.out.println(b);
+      boolean c = a.isEmpty();//判断这个字符串是不是空字符串
+      System.out.println(c);
+      ```
+
+      
+
+   2. 判断一个字符串里面是否含有 某一个子串 contains()
+
+      ```java
+      String[] names = {"明天会更好"，"小刚的故事"，"明朝那些事"}；
+      for(String name : names){
+          if(name.contains("明")){
+              System.out.println(name+"\n");
+          }
+      }
+      ```
+
+   3. 判断以什么开始，以什么结束startsWith（）、
+
+      ```java
+      String[] a = {"明天会更好jpg"，"小刚的故事txt"，"明朝那些事md"}；
+      for(String b : a){
+          if(b.startsWith("明")){//以明开始
+              System.out.println(b+"\n");
+          }
+      }
+      
+      for(String c : a){
+          if(c.endsWith("txt")){//以txt结束//可以用来判断文件类型
+              System.out.println(c+"\n");
+          }
+      }
+      ```
+
+   ### 2.转换
+
+   ##### 字母的转换
+
+   1. 全转成大写toUpperCase()
+
+   2. 全转成小写toLowerCase()
+
+      ```java
+      String a = "i LOve U";
+      String b = a.toUpperCase();//字母转换成大写
+      String c = a.toLowerCase();//字母转换成小写
+      System.out.println(a);
+      System.out.println(b);
+      System.out.println(c);
+      ```
+
+   3. 将字符数组转换成字符串（要转换的字符数组，从第几个元素开始转换，到第几个元素结束）；
+
+      ​	
+
+      ```java
+      char[] a = {"永","乐","大","典"};
+      String b = new String(a); //将字符数组a完整的转换成字符串
+      System.out.println(b);
+      String c = new String(a,1,3);//将字符数组a从第一个元素开始转换3个元素，转换成字符串
+      System.out.println(c);
+      ```
+
+   4. 将字符串转换成字符数组toCharArray();
+
+      ```java
+      String a = "朱元璋"；
+      char[] b = a.toCharArray();//将字符串a，转换成字符数组b.
+      for(char c : b){//遍历这个字符数组b
+          System.out.println(c);
+      }
+      ```
+
+   5. 字符串转字节数组
+
+      ```java
+      String a = "张定边";
+      byte[] b = a.getBytes();//将字符串a，转换成字节数组b.
+      for(byte c : b){//遍历这个字节数组b
+          System.out.println(c);
+      }
+      ```
+
+   6. 其他数据类型转字符串ValueOf(),也可以直接用他直接和一个空字符串相加，就变成字符串了
+
+      ```java
+      Object a = new Object();
+      String b = String.ValueOf(a);
+      System.out.println(b);
+      
+      System.out.println(object.toString());//这个也可以转成字符串
+      ```
+
+   7.  去除前导后导空格
+
+      ```java
+      String a = " 张飞 ";
+      System.out.println(a);
+      String b = a.trim();//将字符串前后的空格去除
+      System.out.println(b);
+      ```
+
+   8. 比较字符串方法compareTo();
+
+      ```java
+      String a = "looa";
+      String b = "loob";
+      System.out.println(a compareTo(b));//返回值为a-b的值
+      System.out.println(b compareTo(a));//返回值为b-a的值
+      ```
+
+   ### 3.字符串的切割和替换、子串
+
+   1. 切割split();
+
+   ```java
+   String a = "张飞q刘备q关羽";
+   System.out.println(a);
+   String[] b = a.split("q");//以q为界限将字符串切割成一个字符串数组
+   for(String c : b){
+       System.out.println(c);
+   }
+   ```
+
+      2.替换replace(a,b);//将a替换成b;
+
+   ```java
+   String a = "刘关张";
+   System.out.println(a);
+   String b = a.replace("刘","赵马黄");//将刘替换成赵马黄
+   System.out.println(b);
+   ```
+
+   ### 其他字符串方法
+
+   1. 读取给定位置的字符CharAt
+
+      ```java
+      String a = "abcdefg";
+      char b = a.char(5);//将字符串a中的第5个字符赋给b
+      System.out.println(b);
+      ```
+
+   2. 合并字符串concat（）
+
+      ```java
+      String a = "456";
+      String b = "789";
+      String c = a.concat(b);//将字符串a和字符串b合并，a在前
+      String d = a.concat("123");//将123加到字符串a后面；
+      System.out.println(c);
+      ```
+
+   3. 某一个字符在字符串中第一次出现的位置indexOf();
+
+      ```java
+      String a = "acbcdefg";
+      int b = a.indexOf("c",2);//c在字符串a中从第2个开始第一次出现的位置，第3个
+      int c = a.indexOf("c");//c在字符串a中第一次次出现的位置，没有限制所以从第0个字符开始判断，1
+      System.out.println(b);
+      System.out.println(c);
+      ```
+
+   4. 某一个字符在字符串中最后一次出现的位置lastIndexOf();
+
+      ```java
+      String a = "123456789";
+      int b = a.lastIndexOf("8");//8在字符串a中最后一次出现的位置，后面也可以加参数，现在查找的位置
+      System.out.println(b);
+      ```
+
+## 字符串的容器类StringBuilder
+
+作用：对字符串的增删改查
+
+#### 原则：返回值都是被操作的对象，
+
+1. 增加append();//可以增加任意类型的东西
+
+```java
+StringBuilder a = new StringBuilder("张飞");
+System.out.println(a);
+a.append("李白");//增加字符串，可以增加任意类型的东西,包括布尔类型
+System.out.println(a);
+```
+
+2.判断这个字符串一共有几个字符length()
+
+```java
+StringBuilder a = new StringBuilder("abcdefg");
+int b = a.length();//判断a字符串一共有几个字符
+System.out.println(b);
+```
+
+3.在某一个位置添加内容insert();
+
+```java
+StringBuilder a = new StringBuilder("abcdefg");
+a.insert(4,"字母");//在字符串a中的第四个位置添加“字母”
+System.out.println(a);
+```
+
+4.将字符串的内容反转reverse（）；
+
+```java
+StringBuilder a = new StringBuilder("abcdefg");
+a.reverse();//将字符串a中的字符反转
+System.out.println(a);
+```
+
+5.删除字符串中某一部分delete（）;
+
+```java
+StringBuilder a = new StringBuilder("abc字123母defg");
+System.out.println(a);
+a.deleteCharAt(8);//删除字符串a中第8个字符；
+System.out.println(a);
+a.delete(a.indexOf("字"),a.indexOf("母"));//将字符串a，从“字”开始到“母”删除
+System.out.println(a);
+```
+
